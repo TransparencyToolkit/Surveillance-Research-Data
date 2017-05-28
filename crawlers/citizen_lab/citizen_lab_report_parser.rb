@@ -50,7 +50,11 @@ class CitizenLabReportParser
   def parse_authors
     poss_authors = @html.css("h3")+@html.css("div.entry-content").css("p").css("strong")
     authors = poss_authors.select{|ele| ele.text.include?("By")}
-    return authors.first.text.gsub("By: ", "").gsub("By ", "").gsub("and ", "").split(", ") if authors && !authors.empty?
+    if authors && !authors.empty? && authors.first.text.include?("*")
+      return authors.first.text.gsub("By: ", "").gsub("By ", "").gsub("and ", "").gsub("**", "").gsub("&","").split(",*")
+    else
+      return authors.first.text.gsub("By: ", "").gsub("By ", "").gsub("and ", "").split(", ") if authors && !authors.empty?
+    end
   end
 
   # Get links to media coverage and similar
