@@ -14,7 +14,7 @@ detectors_to_run = [ {
                          catalyst_organizations: "catalyst_organizations"
                        }},
                      {
-                       detector_name: "TermlistDetector",
+                       annotator_name: "TermlistAnnotator",
                        input_params: {
                          term_list: File.read("country_names.json"),
                          fields_to_check: ["text", "title"],
@@ -25,7 +25,7 @@ detectors_to_run = [ {
                        }
                      },
                      {
-                       detector_name: "TermlistDetector",
+                       annotator_name: "TermlistAnnotator",
                        input_params: {
                          term_list: File.read("topics.json"),
                          fields_to_check: ["text", "title"],
@@ -36,7 +36,7 @@ detectors_to_run = [ {
                        }
                      },
                      {
-                       detector_name: "TermlistDetector",
+                       annotator_name: "TermlistAnnotator",
                        input_params: {
                          term_list: File.read("tools.json"),
                          fields_to_check: ["text", "title"],
@@ -47,7 +47,7 @@ detectors_to_run = [ {
                        }
                      },
                      {
-                       detector_name: "TermlistDetector",
+                       annotator_name: "TermlistAnnotator",
                        input_params: {
                          term_list: File.read("company_names.json"),
                          fields_to_check: ["text", "title"],
@@ -58,24 +58,13 @@ detectors_to_run = [ {
                        }
                      },
                      {
-                       detector_name: "LanguageDetector",
+                       annotator_name: "LanguageAnnotator",
                        input_params: {
                          fields_to_check: ["text"]},
                        output_param_names:{
                          catalyst_language: "catalyst_language"
                        }
-                     },
-                     {
-                       detector_name: "TfidfKeywordDetector",
-                       input_params: {
-                         fields_to_check: ["text"],
-                         index_name: index_name,
-                         upper_bound: 5,
-                         lower_bound: 0.3
-                       },
-                       output_param_names:{
-                         catalyst_tfidfkeyword: "catalyst_tfidfkeyword"
-                       }}
+                     }
                      ]
 
 docs_to_process = {
